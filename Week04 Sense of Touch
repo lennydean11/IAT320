@@ -1,0 +1,35 @@
+import board
+import time
+from adafruit_circuitplayground.express import cpx
+
+cpx.pixels.brightness = 0.3
+
+while True:
+    if cpx.touch_A5: 
+        for i in range(255, 0, -7):
+            cpx.pixels.fill((i, 0, 0))
+        for i in range(0, 255, 5):
+            cpx.pixels.fill((i, 0, 0))
+        
+    elif cpx.touch_A3:
+        cpx.play_tone(262, 0.2)
+        cpx.pixels.fill((255,0,0))
+        cpx.play_tone(262, 0.1)
+        cpx.pixels.fill((255,69,0))
+        cpx.play_tone(294,0.45)
+        cpx.pixels.fill((0,69,0))
+        cpx.play_tone(262, 0.45)
+        cpx.pixels.fill((69,0,0))
+        cpx.play_tone(349,0.45)
+        cpx.pixels.fill((255,69,10))
+        cpx.play_tone(330, 0.5)
+        
+    elif cpx.button_a:
+        cpx.pixels.fill((255, 0, 0))
+        cpx.start_tone(440)
+        
+        
+        
+    else:
+        cpx.pixels.fill((0, 0, 0))
+        cpx.stop_tone()
